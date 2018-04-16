@@ -43,94 +43,107 @@ function showroom_shortcode() {
 }
 
 function showroom_layout( $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio ) {
-        echo '
-        <style>
-        div {
-            margin-bottom:2px;
-        }
-         
-        input{
-            margin-bottom:4px;
-        }
-        </style>
-        ';
-
         
-
     echo "
     <div class='container'>
     <hr>
-    <h1>Featured Listings</h1>
+    <h1>Vehicle Listings</h1>
     <hr>
     <div class='row'>
         <div class='col-md-2'>
-            <div class='form-group'>
-                <label for='year'>Make</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Make'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Price</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Price'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Year</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Year'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Miliage</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Miliage'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Body Type</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Body Type'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Colour</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Colour'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Transmission</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Transmission'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Engine Capacity</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Engine Capacity'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Fuel</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Fuel'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Location</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Location'>
-            </div>
-
-            <div class='form-group'>
-                <label for='year'>Vehicle Type</label>
-                <input type='text' class='form-control' id='year' placeholder='Enter Vehile Type'>
-            </div>
-        </div>
-
-        <div class='col-md-10'>
-        <div class='row'>
-        <div class='col-md-4'>
+        <label for='filter'><h2 class='text-success'>Filter</h2></label>
             <div class='form-group'>
                 <label for='show_price'>Price Sort</label>
                     <select class='form-control' id='show_price'>
                     <option value='0'> All </option>
-                    <option value='10000'> Less Than 10 000 </option>
-                        <option value='20000'> Less Than 20 000 </option>
+                    <option value='10 000.00'> Less Than 10 000 </option>
+                        <option value='20 000.00'> Less Than 20 000 </option>
                     </select>
             </div>
+
+
+            <div class='form-group'>
+                <label for='show_make'>Make</label>
+                <select class='form-control' id='show_make'>
+                        <option value='x'> All </option>
+                        <option>Nissan</option>
+                        <option>Ford</option>
+                        <option value='VW'>VW</option>
+                        <option>Toyota</option>
+                    </select>
+            </div>
+
+            <div class='form-group'>
+                <label for='year'>Year</label>
+                    <select class='form-control' id='show_year'>
+                        <option value='0'> All </option>
+                        <option>2000</option>
+                        <option>2001</option>
+                    </select>
+            </div>
+
+
+            <div class='form-group'>
+                <label for='show_body_type'>Body Type</label>
+                <select class='form-control' id='show_body_type'>
+                        <option value='x'> All </option>
+                        <option>Sedan</option>
+                        <option>SUV</option>
+                    </select>
+            </div>
+
+
+            <div class='form-group'>
+                <label for='show_transmission'>Transmission</label>
+                <select class='form-control' id='show_transmission'>
+                        <option value='x'> All </option>
+                        <option>Manual</option>
+                        <option>Automatic</option>
+                    </select>
+            </div>
+
+            <div class='form-group'>
+                <label for='show_engine_capacity'>Engine Capacity</label>
+                <select class='form-control' id='show_engine_capacity'>
+                        <option value='0'> All </option>
+                        <option value='1'>1 litre</option>
+                        <option value='2'>2 litre</option>
+                    </select>
+            </div>
+
+            <div class='form-group'>
+                <label for='show_fuel'>Fuel</label>
+                <select class='form-control' id='show_fuel'>
+                        <option value='x'> All </option>
+                        <option>Petrol</option>
+                        <option>Diesel</option>
+                    </select>
+            </div>
+
+            <div class='form-group'>
+                <label for='show_location'>Location</label>
+                <select class='form-control' id='show_location'>
+                        <option value='x'> All </option>
+                        <option>Pretoria</option>
+                        <option>Capetown</option>
+                    </select>
+            </div>
+
+
+            <div class='form-group'>
+                <button class='btn btn-success' id='show_search'>Filter Search</button>
+            </div>
+        </div>";
+
+        echo "
+        <div class='col-md-10'>
+        <div class='row'>
+        <div class='col-md-4'>
+            
+        </div>
+
+        <div class='col-md-4'>
+            
         </div>
 
         <div class='col-md-4'>
@@ -146,18 +159,9 @@ function showroom_layout( $username, $password, $email, $website, $first_name, $
             </div>
         </div>
 
-        <div class='col-md-4'>
-            <div class='form-group'>
-                <label for='show_id'>ID</label>
-                <select class='form-control' id='searchButton'>
-                    <option>1</option>
-                    <option>2</option>
-                </select>
-            </div>
         </div>
 
         <div id='results'></div>
-        </div>
     </div>
     
     

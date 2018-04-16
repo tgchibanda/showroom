@@ -8,6 +8,8 @@ function bottom_scripts(){
 
     // Add main js
     wp_enqueue_script('show-main-script', plugins_url().'/showroom/js/main.js');
+
+    
    
 }
 
@@ -23,6 +25,13 @@ function top_scripts(){
 
     wp_register_script('bootstrap2', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js');
     wp_enqueue_script('bootstrap2');
+
+    // Add jquery js
+    wp_register_script('jquery-script', plugins_url().'/showroom/js/jquery.js');
+    wp_enqueue_script('jquery-script');
+
+    wp_register_script('sweetalert.min', plugins_url().'/showroom/js/sweetalert.min.js');
+    wp_enqueue_script('sweetalert.min');
    
 }
 
