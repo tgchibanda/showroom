@@ -11,12 +11,12 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 $app = new \Slim\App;
 
-//Get all vehicles
+//Get all clubs
 
-$app->get('/api/vehicles', function(Request $request, Response $response){
+$app->get('/api/clubs', function(Request $request, Response $response){
 	$sql = "SELECT
 			   *
-			   from vehicles";
+			   from clubs";
 	
 	try{
 		//Get database object
@@ -35,14 +35,14 @@ $app->get('/api/vehicles', function(Request $request, Response $response){
 });
 
 
-//Get one vehicle
-$app->get('/api/vehicle/{id}', function(Request $request, Response $response){
+//Get one club
+$app->get('/api/club/{id}', function(Request $request, Response $response){
 
 	$id = $request->getAttribute('id');
 
 	$sql = "SELECT
 			   *
-			   from vehicles where id='$id'";
+			   from clubs where id='$id'";
 	
 	try{
 		//Get database object
@@ -133,7 +133,7 @@ $app->get('/api/search', function(Request $request, Response $response){
 	$sql = "SELECT
 	*
 FROM
-	vehicles 
+	clubs 
 WHERE
 	id!='0'$vm$vp$vy$vbt$vec$vf$vl$vt
 ";
@@ -159,9 +159,9 @@ WHERE
 
 //Add vehicle
 
-$app->post('/api/vehicle', function(Request $request, Response $response){
+$app->post('/api/club', function(Request $request, Response $response){
 			
-			$vehicle_name = $request->getParam('vehicle_name');
+			$club_name = $request->getParam('club_name');
 			$vehicle_make = $request->getParam('vehicle_make');
 			$vehicle_model = $request->getParam('vehicle_model');
 			$vehicle_body_type = $request->getParam('vehicle_body_type');
@@ -186,11 +186,11 @@ $app->post('/api/vehicle', function(Request $request, Response $response){
 			$vehicle_drive = $request->getParam('vehicle_drive');
 			$vehicle_weight = $request->getParam('vehicle_description');
 	 
-	 $sql = "insert into vehicles (vehicle_name, vehicle_make, vehicle_model, vehicle_body_type, vehicle_miliage, vehicle_year,
+	 $sql = "insert into vehicles (club_name, vehicle_make, vehicle_model, vehicle_body_type, vehicle_miliage, vehicle_year,
 								vehicle_price, vehicle_color, vehicle_transmission, vehicle_fuel, vehicle_type, vehicle_main_picture,
 								vehicle_picture1, vehicle_picture2, vehicle_picture3, vehicle_picture4, vehicle_picture5, vehicle_description, vehicle_location, vehicle_doors, vehicle_drive, vehicle_weight) 
 
-								values(:vehicle_name, :vehicle_make, :vehicle_model, :vehicle_body_type, :vehicle_miliage, :vehicle_year,
+								values(:club_name, :vehicle_make, :vehicle_model, :vehicle_body_type, :vehicle_miliage, :vehicle_year,
 								:vehicle_price, :vehicle_color, :vehicle_transmission, :vehicle_fuel, :vehicle_type, :vehicle_main_picture,
 								:vehicle_picture1, :vehicle_picture2, :vehicle_picture3, :vehicle_picture4, :vehicle_picture5, :vehicle_description, :vehicle_location, :vehicle_doors, :vehicle_drive, :vehicle_weight)";
 								
@@ -202,7 +202,7 @@ $app->post('/api/vehicle', function(Request $request, Response $response){
 		 
 		 $stmt = $db->prepare($sql);
 		 
-		 $stmt->bindParam(':vehicle_name', $vehicle_name);
+		 $stmt->bindParam(':club_name', $club_name);
 		 $stmt->bindParam(':vehicle_make', $vehicle_make);
 		 $stmt->bindParam(':vehicle_model', $vehicle_model);
 		 $stmt->bindParam(':vehicle_body_type', $vehicle_body_type);
@@ -243,7 +243,7 @@ $app->put('/api/vehicle/update/{id}', function(Request $request, Response $respo
 	
 	 $id = $request->getAttribute('id');
 
-	 		$vehicle_name = $request->getParam('vehicle_name');
+	 		$club_name = $request->getParam('club_name');
 			$vehicle_make = $request->getParam('vehicle_make');
 			$vehicle_model = $request->getParam('vehicle_model');
 			$vehicle_body_type = $request->getParam('vehicle_body_type');
@@ -270,7 +270,7 @@ $app->put('/api/vehicle/update/{id}', function(Request $request, Response $respo
 			$vehicle_weight = $request->getParam('vehicle_description');
 	 
 			
-	 $sql = "update vehicles set vehicle_name =:vehicle_name, vehicle_make =:vehicle_make, vehicle_model=:vehicle_model, vehicle_body_type=:vehicle_body_type, vehicle_miliage=:vehicle_miliage, vehicle_year=:vehicle_year,
+	 $sql = "update vehicles set club_name =:club_name, vehicle_make =:vehicle_make, vehicle_model=:vehicle_model, vehicle_body_type=:vehicle_body_type, vehicle_miliage=:vehicle_miliage, vehicle_year=:vehicle_year,
 	 vehicle_price=:vehicle_price, vehicle_color=:vehicle_color, vehicle_transmission=:vehicle_transmission, vehicle_fuel=:vehicle_fuel, vehicle_type=:vehicle_type, vehicle_main_picture=:vehicle_main_picture,
 	 vehicle_picture1=:vehicle_picture1, vehicle_picture2=:vehicle_picture2, vehicle_picture3=:vehicle_picture3, vehicle_picture4=:vehicle_picture4, vehicle_picture5=:vehicle_picture5, vehicle_description=:vehicle_description, vehicle_location=:vehicle_location, vehicle_doors=:vehicle_doors, vehicle_drive=:vehicle_drive, vehicle_weight=:vehicle_weight
 	  where id = '$id'";
@@ -283,7 +283,7 @@ $app->put('/api/vehicle/update/{id}', function(Request $request, Response $respo
 		 
 		 $stmt = $db->prepare($sql);
 		 
-		 $stmt->bindParam(':vehicle_name', $vehicle_name);
+		 $stmt->bindParam(':club_name', $club_name);
 		 $stmt->bindParam(':vehicle_make', $vehicle_make);
 		 $stmt->bindParam(':vehicle_model', $vehicle_model);
 		 $stmt->bindParam(':vehicle_body_type', $vehicle_body_type);
